@@ -1,4 +1,4 @@
-FROM php:fpm
+FROM php:7.1-fpm
 MAINTAINER Yusuke Miyazaki <miyazaki.dev@gmail.com>
 
 # install the PHP extensions we need
