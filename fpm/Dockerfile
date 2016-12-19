@@ -8,7 +8,8 @@ RUN apt-get update \
         && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
         && docker-php-ext-install -j$(nproc) gd mbstring mysqli opcache \
         && pecl install apcu \
-        && pecl install apcu_bc-beta
+        && pecl install apcu_bc-beta \
+        && docker-php-ext-enable apcu
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
