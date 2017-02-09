@@ -1,5 +1,4 @@
-FROM php:7.0-fpm
-MAINTAINER Yusuke Miyazaki <miyazaki.dev@gmail.com>
+FROM php:7.1-fpm
 
 # install the PHP extensions we need
 RUN apt-get update \
@@ -21,7 +20,6 @@ RUN { \
         echo 'opcache.fast_shutdown=1'; \
         echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/opcache.ini
-
 
 EXPOSE 9000
 CMD ["php-fpm"]
