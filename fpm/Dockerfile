@@ -10,6 +10,17 @@ RUN apt-get update \
         && pecl install apcu_bc-beta \
         && docker-php-ext-enable apcu
 
+RUN { \
+        echo '[apcu]'; \
+        echo 'extension = apcu.so'; \
+        echo 'apc.enabled = 1'; \
+        echo 'apc.enable_cli = 1'; \
+        echo 'apc.shm_size = 64M'; \
+        echo 'apc.mmap_file_mask = /tmp/apc.XXXXXX'; \
+        echo '[apc]'; \
+        echo 'extension = apc.so'; \
+    } > /usr/local/etc/php/conf.d/apcu.ini
+
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
