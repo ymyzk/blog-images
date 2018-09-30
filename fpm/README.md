@@ -1,5 +1,5 @@
 # fpm
-PHP 7.1 + FPM
+PHP 7.2 + FPM
 
 ## Extensions
 - gd
