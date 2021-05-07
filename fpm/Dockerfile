@@ -1,10 +1,10 @@
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
 # install the PHP extensions we need
 RUN apt-get update \
-        && apt-get install -y libpng-dev libjpeg-dev \
+        && apt-get install -y libonig-dev libpng-dev libjpeg-dev \
         && rm -rf /var/lib/apt/lists/* \
-        && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+        && docker-php-ext-configure gd --with-jpeg \
         && docker-php-ext-install -j$(nproc) gd mbstring mysqli opcache \
         && pecl install apcu \
         && pecl install apcu_bc-beta \
