@@ -1,5 +1,5 @@
 # fpm
-PHP 7.2 + FPM
+PHP 7.4 + FPM
 
 ## Extensions
 - exif
