@@ -2,10 +2,10 @@ FROM php:7.4-fpm
 
 # install the PHP extensions we need
 RUN apt-get update \
-        && apt-get install -y libonig-dev libpng-dev libjpeg-dev \
+        && apt-get install -y libonig-dev libpng-dev libjpeg-dev libzip-dev \
         && rm -rf /var/lib/apt/lists/* \
         && docker-php-ext-configure gd --with-jpeg \
-        && docker-php-ext-install -j$(nproc) exif gd mbstring mysqli opcache \
+        && docker-php-ext-install -j$(nproc) exif gd mbstring mysqli opcache zip \
         && pecl install apcu \
         && pecl install apcu_bc-beta \
         && docker-php-ext-enable apcu

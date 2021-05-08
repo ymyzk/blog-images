@@ -8,3 +8,4 @@ PHP 7.4 + FPM
 - mysqli
 - opcache
 - apcu
+- zip
