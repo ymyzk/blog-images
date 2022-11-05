@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0-fpm
 
 # install the PHP extensions we need
 RUN apt-get update \
@@ -7,14 +7,13 @@ RUN apt-get update \
         && docker-php-ext-configure gd --with-jpeg \
         && docker-php-ext-install -j$(nproc) exif gd mbstring mysqli opcache zip \
         && pecl install apcu \
-        && pecl install apcu_bc-beta \
         && docker-php-ext-enable apcu
 
 RUN { \
         echo '[apcu]'; \
         echo 'extension = apcu.so'; \
         echo 'apc.enabled = 1'; \
-        echo 'apc.enable_cli = 1'; \
+        echo 'apc.enable_cli = 0'; \
         echo 'apc.shm_size = 64M'; \
         echo 'apc.mmap_file_mask = /tmp/apc.XXXXXX'; \
         echo '[apc]'; \
